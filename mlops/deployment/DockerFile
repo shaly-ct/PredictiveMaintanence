@@ -1,0 +1,23 @@
+#Create base image with Python 3.9 installed
+from PYTHON:3.9
+
+#Setting working directory
+WORKDIR \app 
+
+#Copying files from current directory on the host to the container
+COPY..
+
+#Installing requirements from requirements.txt 
+RUN pip install -r requirements.txt
+
+RUN useradd -m -u 1000 user
+USER user
+ENV HOME = /home/user \
+  PATH = /home/user/.local/bin:$PATH
+
+WORKDIR $HOME/app
+
+COPY --chown=user . $HOME/app
+
+#Making streamlit app to run locally on port 8501 and make it access externally
+CMD ["streamlit","run","app.py","--server.port=8501","--server.address=0.0.0.0","--server.enableXsrfProtection = False"]
