@@ -18,6 +18,7 @@ except RepositoryNotFoundError:
     create_repo(repo_id=repo_id, repo_type=repo_type, private=False)
     print(f"Space '{repo_id}' created.")
 
+# Using absolute paths to avoid FileNotFoundError after directory changes
 api.upload_folder(
     folder_path="mlops/data",
     repo_id=repo_id,
