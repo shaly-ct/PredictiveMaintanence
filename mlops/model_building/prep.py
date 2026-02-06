@@ -8,6 +8,13 @@ from sklearn.model_selection import train_test_split
 # for hugging face space authentication to upload files
 from huggingface_hub import login, HfApi
 
+# Define constants for the dataset and output paths
+api = HfApi(token=os.getenv("HF_TOKEN"))
+DATASET_PATH = "hf://datasets/Shalyn/predictiveMaintanence/engine_data.csv"
+bank_dataset = pd.read_csv(DATASET_PATH)
+print("Dataset loaded successfully.")
+
+
 # defining the explanatory (independent) and response (dependent) variables
 X = data.drop(["Engine Condition"], axis=1)
 y = data["Engine Condition"]
