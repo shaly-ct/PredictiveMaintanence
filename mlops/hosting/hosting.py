@@ -4,5 +4,5 @@ api = HfApi(token=os.getenv("HF_TOKEN"))
 api.upload_folder(
     folder_path="mlops/deployment",
     repo_id="Shalyn/PredictiveMaintanence",
-    repo_type = "space"
+    repo_type = "space",
 )
