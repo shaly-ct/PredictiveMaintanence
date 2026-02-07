@@ -1,8 +1,10 @@
 from huggingface_hub import HfApi
 import os
+
 api = HfApi(token=os.getenv("HF_TOKEN"))
 api.upload_folder(
-    folder_path="mlops/deployment",
-    repo_id="Shalyn/predictiveMaintanence",
-    repo_type = "space",
+    folder_path="mlops/deployment",     # Corrected: the local folder containing your files, relative to repo root
+    repo_id="Shalyn/predictiveMaintanence",          # the target repo
+    repo_type="space",                      # dataset, model, or space
+    path_in_repo="",                          # optional: subfolder path inside the repo
 )
